@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using System.Text.RegularExpressions;
 
 namespace BrowserStack
 {
@@ -12,7 +13,7 @@ namespace BrowserStack
     public void HealthCheck()
     {
       driver.Navigate().GoToUrl("http://bs-local.com:45691/check");
-      StringAssert.Contains("Up and Running", driver.PageSource);
+      Assert.IsTrue(Regex.IsMatch(driver.PageSource, "Up and running", RegexOptions.IgnoreCase));
     }
   }
 }
