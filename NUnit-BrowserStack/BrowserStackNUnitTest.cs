@@ -62,9 +62,10 @@ namespace BrowserStack
       {
         browserStackLocal = new Local();
         List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>() {
-          new KeyValuePair<string, string>("key", "")
+          new KeyValuePair<string, string>("key", accesskey)
         };
         browserStackLocal.start(bsLocalArgs);
+        capability.SetCapability("browserstack.local", true);
       }
 
       driver = new RemoteWebDriver(new Uri("http://"+ ConfigurationManager.AppSettings.Get("server") +"/wd/hub/"), capability);
