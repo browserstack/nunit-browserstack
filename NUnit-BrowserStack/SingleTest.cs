@@ -3,10 +3,10 @@ using OpenQA.Selenium;
 
 namespace BrowserStack
 {
-  [TestFixture("chrome")]
+  [TestFixture("single", "chrome")]
   public class SingleTest : BrowserStackNUnitTest
   {
-    public SingleTest(string environment) : base(environment) { }
+    public SingleTest(string profile, string environment) : base(profile, environment) { }
 
     [Test]
     public void SearchGoogle()

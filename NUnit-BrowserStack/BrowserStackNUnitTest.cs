@@ -13,20 +13,20 @@ namespace BrowserStack
   public class BrowserStackNUnitTest
   {
     protected IWebDriver driver;
+    protected string profile;
     protected string environment;
-    protected bool isLocal;
     private Local browserStackLocal;
 
-    public BrowserStackNUnitTest(string environment, bool isLocal = false)
+    public BrowserStackNUnitTest(string profile, string environment)
     {
+      this.profile = profile;
       this.environment = environment;
-      this.isLocal = isLocal;
     }
     
     [SetUp]
     public void Init()
     {
-      NameValueCollection caps = ConfigurationManager.GetSection("capabilities") as NameValueCollection;
+      NameValueCollection caps = ConfigurationManager.GetSection("capabilities/" + profile) as NameValueCollection;
       NameValueCollection settings = ConfigurationManager.GetSection("environments/" + environment) as NameValueCollection;
 
       DesiredCapabilities capability = new DesiredCapabilities();
@@ -40,8 +40,6 @@ namespace BrowserStack
       {
         capability.SetCapability(key, settings[key]);
       }
-
-      capability.SetCapability("name", GetType().Name);
 
       String username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
       if(username == null)
@@ -58,7 +56,7 @@ namespace BrowserStack
       capability.SetCapability("browserstack.user", username);
       capability.SetCapability("browserstack.key", accesskey);
 
-      if (isLocal)
+      if (capability.GetCapability("browserstack.local") != null && capability.GetCapability("browserstack.local").ToString() == "true")
       {
         browserStackLocal = new Local();
         List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>() {

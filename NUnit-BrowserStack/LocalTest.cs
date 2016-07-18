@@ -4,10 +4,10 @@ using System.Text.RegularExpressions;
 
 namespace BrowserStack
 {
-  [TestFixture("chrome")]
+  [TestFixture("local", "chrome")]
   public class LocalTest : BrowserStackNUnitTest
   {
-    public LocalTest(string environment) : base(environment, true) { }
+    public LocalTest(string profile, string environment) : base(profile, environment) { }
 
     [Test]
     public void HealthCheck()
