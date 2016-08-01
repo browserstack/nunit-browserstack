@@ -1,41 +1,33 @@
-# Nunit-Browserstack
+# nunit-browserstack
+[NUnit](http://www.nunit.org/) Integration with BrowserStack.
 
-Execute [NUnit](https://github.com/nunit/nunit) scripts on BrowserStack.
+![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
-## Usage
+<img src ="http://www.nunit.org/img/logo.gif" height = "71">
 
-### Prerequisites
+## Setup
+* Clone the repo
+* Open the solution `NUnit-BrowserStack.sln` in Visual Studio
+* Build the solution
+* Update `App.config` file with your BrowserStack Username and Access Key(https://www.browserstack.com/accounts/settings)
 
-Visual Studio 2015 update 2
+## Running your tests from Test Explorer via NUnit Test Adapter
+- To run a single test, run test with fixture `single`
+- To run parallel tests, run tests with fixture `parallel`
+- To run local tests, run test with fixture `local`
 
-### Clone the repo
+## Notes
+* You can view your test results on the [BrowserStack automate dashboard](https://www.browserstack.com/automate)
+* To test on a different set of browsers, check out our [platform configurator](https://www.browserstack.com/automate/c-sharp#setting-os-and-browser)
+* You can export the environment variables for the Username and Access Key of your BrowserStack account
 
-`git clone https://github.com/browserstack/nunit-browserstack.git`
+  ```
+  export BROWSERSTACK_USERNAME=<browserstack-username> &&
+  export BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
+  ```
 
-### Install dependencies
-
-Open the appropriate Visual Studio Solution file (.sln) and run `build`.
-Visual Studio will automatically download the dependencies
-
-### BrowserStack Authentication
-
-To run the tests, `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` needs to be replaced with BrowserStack authentication.
-These can be found on the automate accounts page on [BrowserStack](https://www.browserstack.com/accounts/automate)
-
-These needs to be changed in the following files -
-```
-nunit-browserstack/Parallel Tests/BrowserStackParallelTests/BrowserStackTests.cs
-nunit-browserstack/Parallel Tests/BrowserStackParallelLocalTests/BrowserStackLocalTests.cs
-nunit-browserstack/Series Tests/NUnit-BrowserStack/BrowserStackTests.cs
-nunit-browserstack/Series Tests/NUnit-BrowserStack/BrowserStackLocalTests.cs
-```
-
-### Run the tests
-
- - Please refer to the README in the corresponding folders.
-
-------
-
-#### How to specify the capabilities
-
-The [Code Generator](https://www.browserstack.com/automate/c-sharp#setting-os-and-browser) can come in very handy when specifying the capabilities especially for mobile devices.
+## Additional Resources
+* [Documentation for writing automate test scripts in C#](https://www.browserstack.com/automate/c-sharp)
+* [Customizing your tests on BrowserStack](https://www.browserstack.com/automate/capabilities)
+* [Browsers & mobile devices for selenium testing on BrowserStack](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate)
+* [Using REST API to access information about your tests via the command-line interface](https://www.browserstack.com/automate/rest-api)
