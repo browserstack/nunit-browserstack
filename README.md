@@ -13,8 +13,10 @@
 
 ## Running your tests from Test Explorer via NUnit Test Adapter
 - To run a single test, run test with fixture `single`
-- To run parallel tests, run tests with fixture `parallel`
 - To run local tests, run test with fixture `local`
+- To run parallel tests, run tests with fixture `parallel`
+
+ Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 
 ## Notes
 * You can view your test results on the [BrowserStack automate dashboard](https://www.browserstack.com/automate)
