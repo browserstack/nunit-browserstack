@@ -26,6 +26,13 @@ namespace BrowserStack
     [SetUp]
     public void Init()
     {
+      /* change here to add the following from config
+
+            1. Browsers - ie / chrome
+            2. os / version - windows x -> 10. ios on iphone 7-8. samsung android (real mobile)
+            3. 
+
+      */
       NameValueCollection caps = ConfigurationManager.GetSection("capabilities/" + profile) as NameValueCollection;
       NameValueCollection settings = ConfigurationManager.GetSection("environments/" + environment) as NameValueCollection;
 

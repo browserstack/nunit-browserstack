@@ -15,22 +15,22 @@ namespace BrowserStack
         {
             driver.Navigate().GoToUrl("https://www.google.com/ncr");
             IWebElement query = driver.FindElement(By.Name("q"));
-            query.SendKeys("BrowserStack");
+            query.SendKeys("Ipswich Town");
             query.Submit();
             System.Threading.Thread.Sleep(5000);
             Assert.AreEqual("BrowserStack - Google Search", driver.Title);
         }
 
         [Test]
-        public void GoToBbc()
+        public void Bbc()
         {
             DesiredCapabilities capability = new DesiredCapabilities();
             capability.SetCapability("browserName", "iPhone");
             capability.SetCapability("device", "iPhone 8 Plus");
             capability.SetCapability("realMobile", "true");
             capability.SetCapability("os_version", "11.0");
-            capability.SetCapability("browserstack.user", "oliverbaylis3");
-            capability.SetCapability("browserstack.key", "E6kpheLGzKeVeFJsAVfE");
+            capability.SetCapability("browserstack.user", "oli181");
+            capability.SetCapability("browserstack.key", "KTrC3Dz9WiqhyT4m8rFU");
             capability.SetCapability("browserstack.console", "errors");
 
             driver = new RemoteWebDriver(
@@ -38,7 +38,7 @@ namespace BrowserStack
             );
             driver.Navigate().GoToUrl("http://www.bbc.co.uk");
             Console.WriteLine(driver.Title);
-            StringAssert.Contains("bbc", driver.Title.ToLowerInvariant());
+            StringAssert.Contains("broking platform", driver.Title.ToLowerInvariant());
 
             driver.Quit();
         }
