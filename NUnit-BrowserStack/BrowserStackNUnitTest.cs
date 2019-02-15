@@ -34,7 +34,9 @@ namespace BrowserStack
 
       */
       NameValueCollection caps = ConfigurationManager.GetSection("capabilities/" + profile) as NameValueCollection;
-      NameValueCollection settings = ConfigurationManager.GetSection("environments/" + environment) as NameValueCollection;
+      NameValueCollection environments = ConfigurationManager.GetSection("environments/" + environment) as NameValueCollection;
+      NameValueCollection mobileEnvironments = ConfigurationManager.GetSection("mobileEnvironments/" + environment) as NameValueCollection;
+      NameValueCollection browsers = ConfigurationManager.GetSection("browsers") as NameValueCollection;
 
       DesiredCapabilities capability = new DesiredCapabilities();
 
@@ -43,10 +45,21 @@ namespace BrowserStack
         capability.SetCapability(key, caps[key]);
       }
 
-      foreach (string key in settings.AllKeys)
+      foreach (string environmentKey in environments.AllKeys)
       {
-        capability.SetCapability(key, settings[key]);
+        capability.SetCapability(environmentKey, environments[environmentKey]);
+
+        foreach(string browserKey in browsers.AllKeys)
+        {
+          capability.SetCapability(browserKey, browsers[browserKey]);
+        }
+
       }
+
+    foreach (string mobileEnvironmentKey in mobileEnvironments.AllKeys)
+    {
+        capability.SetCapability(mobileEnvironmentKey, mobileEnvironments[mobileEnvironmentKey]);
+    }
 
       String username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
       if(username == null)
