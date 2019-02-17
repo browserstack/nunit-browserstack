@@ -5,10 +5,10 @@ using System;
 
 namespace BrowserStack
 {
-    [TestFixture("single", "chrome")]
-    public class SingleTest : BrowserStackNUnitTest
+    [TestFixture("single", "windows10", "chrome")]
+    public class SingleTest : BrowserStackDesktopNUnitTest
     {
-        public SingleTest(string profile, string environment) : base(profile, environment) { }
+        public SingleTest(string profile, string os, string browserName) : base(profile, os, browserName) { }
 
         [Test]
         public void SearchGoogle()
@@ -18,7 +18,7 @@ namespace BrowserStack
             query.SendKeys("Ipswich Town");
             query.Submit();
             System.Threading.Thread.Sleep(5000);
-            Assert.AreEqual("BrowserStack - Google Search", driver.Title);
+            Assert.AreEqual("Ipswich Town - Google Search", driver.Title);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace BrowserStack
             );
             driver.Navigate().GoToUrl("http://www.bbc.co.uk");
             Console.WriteLine(driver.Title);
-            StringAssert.Contains("broking platform", driver.Title.ToLowerInvariant());
+            StringAssert.Contains("bbc", driver.Title.ToLowerInvariant());
 
             driver.Quit();
         }
