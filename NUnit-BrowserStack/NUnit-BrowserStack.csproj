@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserStackDesktopNUnitTest.cs" />
-    <Compile Include="EnvironmentTypes.cs" />
     <Compile Include="LocalTest.cs" />
     <Compile Include="ParallelTest.cs" />
     <Compile Include="SingleTest.cs" />
