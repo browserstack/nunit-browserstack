@@ -24,18 +24,6 @@ namespace BrowserStack
         [Test]
         public void Bbc()
         {
-            DesiredCapabilities capability = new DesiredCapabilities();
-            capability.SetCapability("browserName", "iPhone");
-            capability.SetCapability("device", "iPhone 8 Plus");
-            capability.SetCapability("realMobile", "true");
-            capability.SetCapability("os_version", "11.0");
-            capability.SetCapability("browserstack.user", "oli181");
-            capability.SetCapability("browserstack.key", "KTrC3Dz9WiqhyT4m8rFU");
-            capability.SetCapability("browserstack.console", "errors");
-
-            driver = new RemoteWebDriver(
-              new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability
-            );
             driver.Navigate().GoToUrl("http://www.bbc.co.uk");
             Console.WriteLine(driver.Title);
             StringAssert.Contains("bbc", driver.Title.ToLowerInvariant());
