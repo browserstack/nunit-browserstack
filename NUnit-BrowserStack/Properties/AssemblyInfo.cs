@@ -13,6 +13,7 @@ using NUnit.Framework;
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+// For more details on LevelOfParallelism Attribute review NUnit documentation- https://github.com/nunit/docs/wiki/LevelOfParallelism-Attribute
 [assembly: LevelOfParallelism(2)]
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
