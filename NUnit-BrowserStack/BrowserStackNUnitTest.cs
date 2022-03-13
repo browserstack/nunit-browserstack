@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 
-
 namespace BrowserStack
 {
   [TestFixture]
@@ -22,27 +21,45 @@ namespace BrowserStack
       this.profile = profile;
       this.environment = environment;
     }
-    
+
+    static DriverOptions getBrowserOption(String browser)
+    {
+      switch (browser)
+      {
+        case "chrome":
+          return new OpenQA.Selenium.Chrome.ChromeOptions();
+        case "firefox":
+          return new OpenQA.Selenium.Firefox.FirefoxOptions();
+        case "safari":
+          return new OpenQA.Selenium.Safari.SafariOptions();
+        case "edge":
+          return new OpenQA.Selenium.Edge.EdgeOptions();
+        default:
+          return new OpenQA.Selenium.Chrome.ChromeOptions();
+      }
+    }
+
     [SetUp]
     public void Init()
     {
-      NameValueCollection caps = ConfigurationManager.GetSection("capabilities/" + profile) as NameValueCollection;
-      NameValueCollection settings = ConfigurationManager.GetSection("environments/" + environment) as NameValueCollection;
+      NameValueCollection caps =
+          ConfigurationManager.GetSection("capabilities/" + profile) as NameValueCollection;
+      NameValueCollection settings =
+          ConfigurationManager.GetSection("environments/" + environment)
+              as NameValueCollection;
+      DriverOptions capability = getBrowserOption(settings["browser"]);
 
-      DesiredCapabilities capability = new DesiredCapabilities();
+      capability.BrowserVersion = "latest";
+      System.Collections.Generic.Dictionary<string, object> browserstackOptions =
+        new Dictionary<string, object>();
 
       foreach (string key in caps.AllKeys)
       {
-        capability.SetCapability(key, caps[key]);
-      }
-
-      foreach (string key in settings.AllKeys)
-      {
-        capability.SetCapability(key, settings[key]);
+        browserstackOptions.Add(key, caps[key]);
       }
 
       String username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
-      if(username == null)
+      if (username == null)
       {
         username = ConfigurationManager.AppSettings.Get("user");
       }
@@ -53,19 +70,25 @@ namespace BrowserStack
         accesskey = ConfigurationManager.AppSettings.Get("key");
       }
 
-      capability.SetCapability("browserstack.user", username);
-      capability.SetCapability("browserstack.key", accesskey);
+      browserstackOptions.Add("userName", username);
+      browserstackOptions.Add("accessKey", accesskey);
 
-      if (capability.GetCapability("browserstack.local") != null && capability.GetCapability("browserstack.local").ToString() == "true")
+      if (caps.Get("local").ToString() == "true")
       {
         browserStackLocal = new Local();
-        List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>() {
+        List<KeyValuePair<string, string>> bsLocalArgs = new List<
+          KeyValuePair<string, string>
+        >()
+        {
           new KeyValuePair<string, string>("key", accesskey)
         };
         browserStackLocal.start(bsLocalArgs);
       }
-
-      driver = new RemoteWebDriver(new Uri("http://"+ ConfigurationManager.AppSettings.Get("server") +"/wd/hub/"), capability);
+      capability.AddAdditionalOption("bstack:options", browserstackOptions);
+      driver = new RemoteWebDriver(
+        new Uri("http://" + ConfigurationManager.AppSettings.Get("server") + "/wd/hub/"),
+        capability
+      );
     }
 
     [TearDown]
