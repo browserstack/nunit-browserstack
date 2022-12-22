@@ -86,7 +86,7 @@ namespace BrowserStack
       }
       capability.AddAdditionalOption("bstack:options", browserstackOptions);
       driver = new RemoteWebDriver(
-        new Uri("http://" + ConfigurationManager.AppSettings.Get("server") + "/wd/hub/"),
+        new Uri("https://" + ConfigurationManager.AppSettings.Get("server") + "/wd/hub/"),
         capability
       );
     }
