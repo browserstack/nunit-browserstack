@@ -5,9 +5,9 @@ namespace BrowserStack
 {
     [TestFixture]
     [Category("sample_test")]
-    public class SingleTest : BrowserStackNUnitTest
+    public class SampleTest : BrowserStackNUnitTest
     {
-        public SingleTest() : base() { }
+        public SampleTest() : base() { }
 
         [Test]
         public void SearchBstackDemo()
