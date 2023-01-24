@@ -14,7 +14,7 @@ namespace BrowserStack
     public void TunnelCheck()
     {
       driver.Navigate().GoToUrl("http://bs-local.com:45454/");
-      Assert.True(Regex.IsMatch(driver.Title, @"/BrowserStack Local/i", RegexOptions.IgnoreCase));
+      Assert.Contains("BrowserStack Local", driver.Title);
     }
   }
 }
