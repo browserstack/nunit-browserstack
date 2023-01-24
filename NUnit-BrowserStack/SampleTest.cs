@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 namespace BrowserStack
 {
     [TestFixture]
-    [Category("sample_test")]
+    [Category("sample-test")]
     public class SampleTest : BrowserStackNUnitTest
     {
         public SampleTest() : base() { }
