@@ -3,18 +3,19 @@
 
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
-<img src ="http://www.nunit.org/img/logo.gif" height = "71">
+<img src ="https://nunit.org/img/nunit.svg" height = "71">
 
-## Setup
+## Run Sample Build
 * Clone the repo
 * Open the solution `NUnit-BrowserStack.sln` in Visual Studio
 * Build the solution
-* Update `App.config` file with your BrowserStack Username and Access Key(https://www.browserstack.com/accounts/settings)
-
-## Running your tests from Test Explorer via NUnit Test Adapter
-- To run a single test, run test with fixture `single`
-- To run local tests, run test with fixture `local`
-- To run parallel tests, run tests with fixture `parallel`
+* Update `browserstack.yml` file with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings)
+### Running your tests from CLI
+* To run the test suite having cross-platform with parallelization, dotnet test --filter "Category=sample-test"
+* To run local tests, dotnet test --filter "Category=sample-local-test"
+### Running your tests from Test Explorer
+- To run a parallel tests, run test with fixture `sample-test`
+- To run local tests, run test with fixture `sample-local-test`
 
  Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 
