@@ -22,7 +22,8 @@ buildName: browserstack build
 # Read more about buildIdentifiers here -> https://www.browserstack.com/docs/automate/selenium/organize-tests
 buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${expression}
 # Set `source` in the syntax `<fw-name>:sample-<branch-name>:<version-number>
-source: nunit-c#:sample-main:v1.0
+
+source: nunit-c#:sample-sdk:v1.0
 
 # =======================================
 # Platforms (Browsers / Devices to test)
