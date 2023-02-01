@@ -3,6 +3,7 @@
 # =============================
 # Add your BrowserStack userName and acccessKey here or set BROWSERSTACK_USERNAME and
 # BROWSERSTACK_ACCESS_KEY as env variables
+
 userName: YOUR_USERNAME
 accessKey: YOUR_ACCESS_KEY
 
@@ -40,17 +41,6 @@ platforms:
   - deviceName: Samsung Galaxy S22 Ultra
     browserName: chrome # Try 'samsung' for Samsung browser
     osVersion: 12.0
-
-# =======================
-# Parallels per Platform
-# =======================
-# The number of parallel threads to be used for each platform set.
-# BrowserStack's SDK runner will select the best strategy based on the configured value
-#
-# Example 1 - If you have configured 3 platforms and set `parallelsPerPlatform` as 2, a total of 6 (2 * 3) parallel threads will be used on BrowserStack
-#
-# Example 2 - If you have configured 1 platform and set `parallelsPerPlatform` as 5, a total of 5 (1 * 5) parallel threads will be used on BrowserStack
-parallelsPerPlatform: 1
 
 # ==========================================
 # BrowserStack Local
