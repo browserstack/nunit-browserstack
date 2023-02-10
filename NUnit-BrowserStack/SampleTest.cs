@@ -20,6 +20,7 @@ namespace BrowserStack
             bool cartOpened = driver.FindElement(By.XPath("//*[@class=\"float-cart__content\"]")).Displayed;
             Assert.AreEqual(cartOpened, true);
             string productOnCartText = driver.FindElement(By.XPath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]")).Text;
+
             Assert.AreEqual(productOnCartText, productOnPageText);
         }
     }
