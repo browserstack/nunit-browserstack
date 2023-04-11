@@ -23,7 +23,7 @@ buildName: browserstack build
 buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${expression}
 # Set `source` in the syntax `<fw-name>:sample-<branch-name>:<version-number>
 
-source: nunit-c#:sample-sdk:v1.0
+source: nunit:sample-sdk:v1.0
 
 # =======================================
 # Platforms (Browsers / Devices to test)
