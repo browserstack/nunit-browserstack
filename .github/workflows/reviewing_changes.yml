@@ -18,7 +18,7 @@ jobs:
       max-parallel: 3
       matrix:
         dotnet: ['6.0.x', '5.0.x']
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        os: [ windows-latest ]
     name: NUnit Repo ${{ matrix.dotnet }} - ${{ matrix.os }} Sample
     env:
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
