@@ -53,7 +53,10 @@ jobs:
           dotnet-version: ${{ matrix.dotnet }}
 
       - name: Install dependencies
-        run: dotnet build
+        run: | 
+          dotnet --version
+          dotnet build
+          
 
       - name: Run sample tests
         run: dotnet test --filter "Category=sample-test"
