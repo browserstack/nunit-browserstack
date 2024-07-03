@@ -3,28 +3,54 @@
 
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
-<img src ="http://www.nunit.org/img/logo.gif" height = "71">
+<img src ="https://nunit.org/img/nunit.svg" height = "71">
 
-## Setup
+## Run Sample Build
 * Clone the repo
 * Open the solution `NUnit-BrowserStack.sln` in Visual Studio
 * Build the solution
-* Update `App.config` file with your BrowserStack Username and Access Key(https://www.browserstack.com/accounts/settings)
-
-## Running your tests from Test Explorer via NUnit Test Adapter
-- To run tests, run tests with fixture `parallel`
-- To run local tests, run test with fixture `local`
+* Update `browserstack.yml` file with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings)
+### Running your tests from CLI
+* To run the test suite having cross-platform with parallelization, dotnet test --filter "Category=sample-test"
+* To run local tests, dotnet test --filter "Category=sample-local-test"
+### Running your tests from Test Explorer
+- To run a parallel tests, run test with fixture `sample-test`
+- To run local tests, run test with fixture `sample-local-test`
 
  Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
+
+## Integrate your test suite
+
+This repository uses the BrowserStack SDK to run tests on BrowserStack. Follow the steps below to install the SDK in your test suite and run tests on BrowserStack:
+
+* Create sample browserstack.yml file with the browserstack related capabilities with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings) and place it in your root folder.
+* Add nuget library BrowserStack.TestAdapter
+```sh
+dotnet add BrowserStack.TestAdapter
+```
+* Build project `dotnet build`
 
 ## Notes
 * You can view your test results on the [BrowserStack automate dashboard](https://www.browserstack.com/automate)
 * To test on a different set of browsers, check out our [platform configurator](https://www.browserstack.com/automate/c-sharp#setting-os-and-browser)
 * You can export the environment variables for the Username and Access Key of your BrowserStack account
 
+  * For Unix-like or Mac machines:
   ```
   export BROWSERSTACK_USERNAME=<browserstack-username> &&
   export BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
+  ```
+
+  * For Windows Cmd:
+  ```
+  set BROWSERSTACK_USERNAME=<browserstack-username>
+  set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
+  ```
+
+  * For Windows Powershell:
+  ```
+  $env:BROWSERSTACK_USERNAME=<browserstack-username>
+  $env:BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
   ```
 
 ## Additional Resources
